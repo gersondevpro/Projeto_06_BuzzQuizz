@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    width: 100vw;
+    height: 69px;
+    background-color: #EC362D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.tituloGeral {
+    font-size: 30px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+/* .alinhamentoBlocos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} */
+
+.seusQuizzes {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 17px;
+}
+
+.seusQuizzes img {
+    width: 30px;
+    height: auto;
+}
+
+.criarQuizz {
+    width: 73vw;
+    height: 181px;
+    margin-top: 146px;
+    margin-bottom: 77px;
+    border: dashed 1px #d5d5d5;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.criarQuizz p {
+    color: #b9b9b9;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.criarQuizz button {
+    width: 151px;
+    height: 40px;
+    background-color: #fafafa;
+    border: dashed 1px #EC362D;
+    color: #EC362D;
+    border-radius: 20px;
+    margin-top: 20px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.divQuizzes {
+    width: 73vw;
+    margin-top: 0.8vw;
+    margin-bottom: 7vh;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.listaQuizzes {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.itemListaMain {
+    display: flex;
+    position: relative;
+}
+
+.relativeIndex {
+    width: 340px;
+    height: 181px;
+    display: flex;
+}
+
+.relativeIndex .gradient {
+    width: 340px;
+    height: 181px;
+    background-image:  linear-gradient( to top, black, transparent);
+    border-radius: 7px;
+    z-index: 1;
+}
+
+.relativeIndex img {
+    width: 340px;
+    height: 181px;
+    border-radius: 7px;
+    position: absolute;
+    z-index: 0;
+}
+
+.itemLista {
+    width: 340px;
+    height: 181px;
+    padding: 15px;
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+    z-index: 2;
+}
+
+.itemLista p {
+    color: #ffffff;
+    width: 88%;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+}
