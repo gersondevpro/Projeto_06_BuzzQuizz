@@ -102,16 +102,12 @@ header {
 .enunciadoPergunta {
     width: 100%;
     height: 138px;
-    background-color: #434CA0;
+    /* background-color: #434CA0; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.resultado {
-    background-color: #EC362D;
 }
 
 .enunciadoPergunta h3 {
