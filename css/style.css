@@ -341,7 +341,6 @@ align-items: center;
 margin-top: 140px;
 align-items: center;
 width: 50vw;
-background-color: #FFFFFF;
 }
     
 .title {
@@ -354,7 +353,7 @@ justify-content: center;
     
 .f-makeQuizz{
 display: flex;
-width: 41.6vw;
+width: 600px;
 height: auto;
 margin-top: 27px;
 flex-direction: column;
@@ -367,7 +366,7 @@ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 
 .f-makeQuizz input {
 color: #BABABA;
-width:39.1vw;
+width:564px;
 height: 46px;
 margin-top: 22px;
 background-color: #FFFFFF;
@@ -393,7 +392,7 @@ line-height: 23px;
 margin-bottom: 8px; 
 }
 .button {
-width: 25.5vw;
+width: 367.2px;
 height: 54px;
 background: #EC362D;
 border-radius: 15px;
@@ -412,7 +411,7 @@ margin-top: 81px;
 /* SCREEN3-2 */
 .f-makeQuestions{
 display: flex;
-width: 41.6vw;
+width: 600px;
 height: auto;
 margin-top: 27px;
 flex-direction: column;
@@ -432,7 +431,7 @@ margin-top: 27px;
 
 .f-makeQuestions input{
 color: #BABABA;
-width:39.1vw;
+width:564px;
 height: 46px;
 margin-top: 12px;
 background-color: #FFFFFF;
@@ -460,7 +459,6 @@ display: flex;
 flex-direction: column;
 align-items: center;
 margin-top: 132px;
-background-color: #FFFFFF;
 margin-bottom: 468px;
 }
 
@@ -468,7 +466,7 @@ margin-bottom: 468px;
 display: flex;
 justify-content: space-between;
 align-items: center;
-width: 41.6vw;
+width: 600px;
 height: 74px;
 background: #FFFFFF;
 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
@@ -494,17 +492,16 @@ height: 54px;
 .screen3-3 main {
 /*define a div pai de todos os itens centralizados*/
 display: flex;
-width: 41.6vw;
+width: 600px;
 flex-direction: column;
 align-items: center;
 margin-top: 132px;
-background-color: #FFFFFF;
 margin-bottom: 468px;
 }
 
 .f-makeLevels {
 display: flex;
-width: 41.6vw;
+width: 600px;
 height: auto;
 margin-top: 27px;
 flex-direction: column;
@@ -525,7 +522,7 @@ margin-top: 27px;
 
 .f-makeLevels input{
 color: #BABABA;
-width:39.1vw;
+width:564px;
 height: 46px;
 margin-top: 12px;
 background-color: #FFFFFF;
@@ -572,7 +569,6 @@ display: flex;
 flex-direction: column;
 align-items: center;
 margin-top: 132px;
-background-color: #FFFFFF;
 margin-bottom: 468px;
 }
 
