@@ -1,5 +1,5 @@
 let listaQuizzes =[];
-const valorId =[];
+let valorId;
 // Busca todos os quizzes no servidor
 function buscarQuizzes(){
     const pedido = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
@@ -48,5 +48,6 @@ function abrirQuizz (id){
     tela1.classList.add('hidden');
     const tela2 =document.querySelector('.tela2');
     tela2.classList.remove('hidden');
+    console.log(valorId)
 }
  

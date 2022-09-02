@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Quizzes</title>
-
+    
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
     
     <!-- INÍCIO: Tela 1 - Tela 1 - Lista de Quizzes -->
     
-    <div class="alinhamentoBlocos tela1">
+    <div class="alinhamentoBlocos tela1 hidden">
 
         <div class="criarQuizz">
             <p>Você não criou nenhum<br>quizz ainda :(</p>
@@ -175,12 +175,12 @@
                 <span>Comece pelo começo</span>
             </div>
             <form action="" class="f-makeQuizz">
-                <input type="text" class="title" placeholder="Título do seu quizz"> 
+                <input type="text" class="titlequizz" placeholder="Título do seu quizz"> 
                 <input type="text" class="url-quizz" placeholder="URL da imagem do seu quizz">
                 <input type="text" class="question-Number" placeholder="Quantidade de perguntas do quizz">
                 <input type="text" class="level-Number" placeholder="Quantidade de níveis do quizz">
             </form>
-            <div class="button">
+            <div class="button" onclick="liberarTela3_2()">
                 Prosseguir pra criar perguntas
             </div>
         </main>
@@ -191,7 +191,13 @@
             <div class="title">
             <span>Crie suas perguntas</span>
             </div>
-            <form action="" class="f-makeQuestions question1">
+            <div class="more-questions ">
+                <label for="fname">Pergunta ${i}</label>
+                <figure botom=${i}>
+                    <img src="/arquivos/Vector.png" alt="">
+                </figure>
+            </div>
+             <form action="" class="f-makeQuestions question1">
                 <div>
                     <label for="fname">Pergunta 1</label>
                     <input type="text" class="text" placeholder="Texto da pergunta">
@@ -211,62 +217,9 @@
                     <input type="text" class="wrong-answer-3" placeholder="Resposta incorreta 3">
                     <input type="text" class="URL-imagem-3" placeholder="URL da imagem 3">     
                 </div>
-            </form>
-            <div class="more-questions">
-            <label for="fname">Pergunta 2</label>
-            <figure>
-                <img src="/arquivos/Vector.png" alt="">
-            </figure>
-            </div>
-            <form action="" class="f-makeQuestions question-2 hidden">
-                <div>
-                    <label for="fname">Pergunta 2</label>
-                    <input type="text" class="text" placeholder="Texto da pergunta">
-                    <input type="text" class="backgroundcolor" placeholder="Cor de fundo da pergunta">
-                </div>
-                <div>
-                    <label for="fname">Resposta correta</label>
-                    <input type="text" class="right-answer" placeholder="Resposta correta">
-                    <input type="text" class="URL-image" placeholder="URL da imagem">
-                </div>
-                <div>
-                    <label for="fname">Respostas incorretas</label>
-                    <input type="text" class="wrong-answer-1" placeholder="Resposta incorreta 1">
-                    <input type="text" class="URL-imagem-1" placeholder="URL da imagem 1">
-                    <input type="text" class="wrong-answer-2" placeholder="Resposta incorreta 2">
-                    <input type="text" class="URL-imagem-2" placeholder="URL da imagem 2">
-                    <input type="text" class="wrong-answer-3" placeholder="Resposta incorreta 3">
-                    <input type="text" class="URL-imagem-3" placeholder="URL da imagem 3">     
-                </div>
-            </form>
-            <div class="more-questions">
-                <label for="fname">Pergunta 3</label>
-                <figure>
-                    <img src="/arquivos/Vector.png" alt="">
-                </figure>
-            </div>
-            <form action="" class="f-makeQuestions question-3 hidden">
-                <div>
-                    <label for="fname">Pergunta 3</label>
-                    <input type="text" class="text" placeholder="Texto da pergunta">
-                    <input type="text" class="backgroundcolor" placeholder="Cor de fundo da pergunta">
-                </div>
-                <div>
-                    <label for="fname">Resposta correta</label>
-                    <input type="text" class="right-answer" placeholder="Resposta correta">
-                    <input type="text" class="URL-image" placeholder="URL da imagem">
-                </div>
-                <div>
-                    <label for="fname">Respostas incorretas</label>
-                    <input type="text" class="wrong-answer-1" placeholder="Resposta incorreta 1">
-                    <input type="text" class="URL-imagem-1" placeholder="URL da imagem 1">
-                    <input type="text" class="wrong-answer-2" placeholder="Resposta incorreta 2">
-                    <input type="text" class="URL-imagem-2" placeholder="URL da imagem 2">
-                    <input type="text" class="wrong-answer-3" placeholder="Resposta incorreta 3">
-                    <input type="text" class="URL-imagem-3" placeholder="URL da imagem 3">     
-                </div>
-            </form>
-            <div class="button">
+            </form> 
+
+            <div class="button" onclick="input()">
                 Prosseguir pra criar níveis
             </div>
         </main>
@@ -277,12 +230,12 @@
             <span>Agora, decida os níveis</span>
             </div>
             <form action="" class="f-makeLevels">
-            <div>
+            <div class="box">
                 <label for="fname">Nível 1</label>
                 <input type="text" class="title-level-1" placeholder="Título do nível">
                 <input type="text" class="porcentage-1" placeholder="% de acerto mínimo">
                 <input type="text" class="URL-image-level-1" placeholder="URL da imagem do nível">
-                <input type="text" class="level-1-description" placeholder="Descrição do nível">    
+                <input type="text" class="box level-1-description " placeholder="Descrição do nível">    
             </div>
             </form>
             <div class="more-levels">
@@ -292,7 +245,7 @@
                 </figure>
             </div>
             <form action="" class="f-makeLevels hidden">
-                <div>
+                <div >
                     <label for="fname">Nível 2</label>
                     <input type="text" class="title-level-2" placeholder="Título do nível">
                     <input type="text" class="porcentage-2" placeholder="% de acerto mínimo">
@@ -306,21 +259,21 @@
                     <img src="/arquivos/Vector.png" alt="">
                 </figure>
                 </div>
-            <form action="" class="f-makeLevels hidden">
+            <form action="" class="f-makeLevels ">
                 <div>
                     <label for="fname">Nível 3</label>
                     <input type="text" class="title-level-3" placeholder="Título do nível">
                     <input type="text" class="porcentage-3" placeholder="% de acerto mínimo">
-                    <input type="text" class="URL-image-level-3" placeholder="URL da imagem do nível">
+                    <input type="text" class="URL-image-level-3" placeholder="URL da imagem do nível" name="userURL">
                     <input type="text" class="level-3-description" placeholder="Descrição do nível">    
                 </div>
             </form>
-            <div class="button">
+            <div class="button" >
             Finalizar Quizz
             </div>
         </main>
     </section>
-    <section class="screen3-4 hidden">
+    <section class="screen3-4">
         <main>
             <div class="title">
                 <span>Agora, decida os níveis</span>
