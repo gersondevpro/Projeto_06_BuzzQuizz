@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Quizzes</title>
-
+    
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -183,12 +183,12 @@
                 <span>Comece pelo começo</span>
             </div>
             <form action="" class="f-makeQuizz">
-                <input type="text" class="title" placeholder="Título do seu quizz"> 
+                <input type="text" class="titlequizz" placeholder="Título do seu quizz"> 
                 <input type="text" class="url-quizz" placeholder="URL da imagem do seu quizz">
                 <input type="text" class="question-Number" placeholder="Quantidade de perguntas do quizz">
                 <input type="text" class="level-Number" placeholder="Quantidade de níveis do quizz">
             </form>
-            <div class="button">
+            <div class="button" onclick="liberarTela3_2()">
                 Prosseguir pra criar perguntas
             </div>
         </main>
@@ -196,136 +196,72 @@
 
     <section class="screen3-2 hidden">
         <main>
-            <div class="title">
-            <span>Crie suas perguntas</span>
-            </div>
-            <form action="" class="f-makeQuestions question1">
-                <div>
-                    <label for="fname">Pergunta 1</label>
-                    <input type="text" class="text" placeholder="Texto da pergunta">
-                    <input type="text" class="backgroundcolor" placeholder="Cor de fundo da pergunta">
-                </div>
-                <div>
-                    <label for="fname">Resposta correta</label>
-                    <input type="text" class="right-answer" placeholder="Resposta correta">
-                    <input type="text" class="URL-image" placeholder="URL da imagem">
-                </div>
-                <div>
-                    <label for="fname">Respostas incorretas</label>
-                    <input type="text" class="wrong-answer-1" placeholder="Resposta incorreta 1">
-                    <input type="text" class="URL-imagem-1" placeholder="URL da imagem 1">
-                    <input type="text" class="wrong-answer-2" placeholder="Resposta incorreta 2">
-                    <input type="text" class="URL-imagem-2" placeholder="URL da imagem 2">
-                    <input type="text" class="wrong-answer-3" placeholder="Resposta incorreta 3">
-                    <input type="text" class="URL-imagem-3" placeholder="URL da imagem 3">     
-                </div>
-            </form>
-            <div class="more-questions">
-            <label for="fname">Pergunta 2</label>
-            <figure>
-                <img src="/arquivos/Vector.png" alt="">
-            </figure>
-            </div>
-            <form action="" class="f-makeQuestions question-2 hidden">
-                <div>
-                    <label for="fname">Pergunta 2</label>
-                    <input type="text" class="text" placeholder="Texto da pergunta">
-                    <input type="text" class="backgroundcolor" placeholder="Cor de fundo da pergunta">
-                </div>
-                <div>
-                    <label for="fname">Resposta correta</label>
-                    <input type="text" class="right-answer" placeholder="Resposta correta">
-                    <input type="text" class="URL-image" placeholder="URL da imagem">
-                </div>
-                <div>
-                    <label for="fname">Respostas incorretas</label>
-                    <input type="text" class="wrong-answer-1" placeholder="Resposta incorreta 1">
-                    <input type="text" class="URL-imagem-1" placeholder="URL da imagem 1">
-                    <input type="text" class="wrong-answer-2" placeholder="Resposta incorreta 2">
-                    <input type="text" class="URL-imagem-2" placeholder="URL da imagem 2">
-                    <input type="text" class="wrong-answer-3" placeholder="Resposta incorreta 3">
-                    <input type="text" class="URL-imagem-3" placeholder="URL da imagem 3">     
-                </div>
-            </form>
-            <div class="more-questions">
-                <label for="fname">Pergunta 3</label>
-                <figure>
-                    <img src="/arquivos/Vector.png" alt="">
+            <!--  <div class="more-questions mqheader${i}">
+                <label for="fname">Pergunta ${i}</label>
+                <figure >
+                    <img  onclick="abrirPerguntas(this)" numero=${i} src="/arquivos/Vector.png" alt="">
                 </figure>
             </div>
-            <form action="" class="f-makeQuestions question-3 hidden">
+            <form action="" class="f-makeQuestions pergunta${i}" >
                 <div>
-                    <label for="fname">Pergunta 3</label>
-                    <input type="text" class="text" placeholder="Texto da pergunta">
-                    <input type="text" class="backgroundcolor" placeholder="Cor de fundo da pergunta">
+                    <label for="fname">Pergunta ${i}</label>
+                    <input type="text"  class="question1" placeholder="Texto da pergunta">
+                    <input type="text" class="question1" placeholder="Cor de fundo da pergunta">
                 </div>
                 <div>
                     <label for="fname">Resposta correta</label>
-                    <input type="text" class="right-answer" placeholder="Resposta correta">
-                    <input type="text" class="URL-image" placeholder="URL da imagem">
+                    <input type="text" class="question1" placeholder="Resposta correta">
+                    <input type="text" class="question1" placeholder="URL da imagem">
                 </div>
                 <div>
                     <label for="fname">Respostas incorretas</label>
-                    <input type="text" class="wrong-answer-1" placeholder="Resposta incorreta 1">
-                    <input type="text" class="URL-imagem-1" placeholder="URL da imagem 1">
-                    <input type="text" class="wrong-answer-2" placeholder="Resposta incorreta 2">
-                    <input type="text" class="URL-imagem-2" placeholder="URL da imagem 2">
-                    <input type="text" class="wrong-answer-3" placeholder="Resposta incorreta 3">
-                    <input type="text" class="URL-imagem-3" placeholder="URL da imagem 3">     
+                    <input type="text" class="question1" placeholder="Resposta incorreta 1">
+                    <input type="text" class="question1" placeholder="URL da imagem 1">
+                    <input type="text" class="question1" placeholder="Resposta incorreta 2">
+                    <input type="text" class="question1" placeholder="URL da imagem 2">
+                    <input type="text" class="question1" placeholder="Resposta incorreta 3">
+                    <input type="text" class="question1" placeholder="URL da imagem 3">     
                 </div>
-            </form>
-            <div class="button">
-                Prosseguir pra criar níveis
-            </div>
-        </main>
+            </form>`
+
+            `<div class="button" onclick="selecionarInfoquizz()">
+                Prosseguir para criar níveis
+            </div>`  -->
+           
+        </main> 
     </section>
     <section class="screen3-3 hidden">
         <main>
-            <div class="title">
+         <!--   <div class="title">
             <span>Agora, decida os níveis</span>
             </div>
-            <form action="" class="f-makeLevels">
-            <div>
-                <label for="fname">Nível 1</label>
-                <input type="text" class="title-level-1" placeholder="Título do nível">
-                <input type="text" class="porcentage-1" placeholder="% de acerto mínimo">
-                <input type="text" class="URL-image-level-1" placeholder="URL da imagem do nível">
-                <input type="text" class="level-1-description" placeholder="Descrição do nível">    
-            </div>
-            </form>
             <div class="more-levels">
                 <label for="fname">Nível 2</label>
                 <figure>
                     <img src="/arquivos/Vector.png" alt="">
                 </figure>
             </div>
-            <form action="" class="f-makeLevels hidden">
-                <div>
+            <form action="" class="f-makeLevels">
+                <div >
                     <label for="fname">Nível 2</label>
-                    <input type="text" class="title-level-2" placeholder="Título do nível">
-                    <input type="text" class="porcentage-2" placeholder="% de acerto mínimo">
-                    <input type="text" class="URL-image-level-2" placeholder="URL da imagem do nível">
-                    <input type="text" class="level-2-description" placeholder="Descrição do nível">    
-                </div>
-            </form>
-            <div class="more-levels">
-                <label for="fname">Nível 3</label>
-                <figure>
-                    <img src="/arquivos/Vector.png" alt="">
-                </figure>
-                </div>
-            <form action="" class="f-makeLevels hidden">
-                <div>
-                    <label for="fname">Nível 3</label>
-                    <input type="text" class="title-level-3" placeholder="Título do nível">
-                    <input type="text" class="porcentage-3" placeholder="% de acerto mínimo">
-                    <input type="text" class="URL-image-level-3" placeholder="URL da imagem do nível">
-                    <input type="text" class="level-3-description" placeholder="Descrição do nível">    
-                </div>
-            </form>
-            <div class="button">
+                    <input type="text" class="nivel1" placeholder="Título do nível">
+                    <input type="text" class="nivel1" placeholder="% de acerto mínimo">
+                    <input type="text" class="nivel1" placeholder="URL da imagem do nível">
+                    <input type="text" class="nivel1" placeholder="Descrição do nível">    
+                </div> 
+             </form>
+            <form action="" class="f-makeLevels">
+                <div >
+                    <label for="fname">Nível 2</label>
+                    <input type="text" class="nivel2" placeholder="Título do nível">
+                    <input type="text" class="nivel2" placeholder="% de acerto mínimo">
+                    <input type="text" class="nivel2" placeholder="URL da imagem do nível">
+                    <input type="text" class="nivel2" placeholder="Descrição do nível">    
+                </div> 
+             </form>
+            <div class="button" onclick="validarNiveis()">
             Finalizar Quizz
-            </div>
+            </div>    -->
         </main>
     </section>
     <section class="screen3-4 hidden">
