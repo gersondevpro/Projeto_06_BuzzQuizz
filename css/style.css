@@ -32,16 +32,11 @@ header {
 
 /* INÍCIO: Tela 1 - Tela 1 - Lista de Quizzes */
 
-.seusQuizzes {
+.tela1 {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 17px;
-}
-
-.seusQuizzes img {
-    width: 30px;
-    height: auto;
 }
 
 .criarQuizz {
@@ -76,11 +71,25 @@ header {
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-main {
+.seusQuizzes {
+    /* width: 100vw; */
+    height: auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
+}
+
+.seusQuizzesAdicionar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+}
+
+.seusQuizzesAdicionar img {
+    width: 30px;
+    height: auto;
 }
 
 h2 {
@@ -93,12 +102,13 @@ h2 {
     margin-top: 0.8vw;
     margin-bottom: 7vh;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
 }
 
 .listaQuizzes {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
 }
@@ -112,6 +122,13 @@ h2 {
     width: 340px;
     height: 181px;
     display: flex;
+}
+
+.todosOsQuizzes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .relativeIndex .gradient {
@@ -148,8 +165,6 @@ h2 {
     line-height: 22px;
 }
 
-/* FINAL: Tela 1 - Tela 1 - Lista de Quizzes */
-
 
 
 
@@ -157,7 +172,7 @@ h2 {
 
 /* INÍCIO: Tela 2 - Página de um quizz */
 
-.cabecalho {
+.capaQuizz {
     width: 100vw;
     height: 227px;
     margin-top: 69px;
@@ -181,7 +196,7 @@ h2 {
     align-items: center;
 }
 
-.cabecalho img {
+.capaQuizz img {
     width: 100vw;
     height: 227px;
     object-fit: cover;
@@ -200,36 +215,44 @@ h2 {
 }
 
 .tituloCabecalho h2 {
+    max-width: 70vw;
     color: #FFFFFF;
-    font-size: 39px;
+    font-size: min(39px, 5.5vw);
     font-weight: 400;
     position: absolute;
 }
 
-.listaQuizzCompleto {
-    max-width: 759px;
+.quizz {
+    width: 100vw;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 42px;
-    gap: 20px;
 }
 
-.listaAlternativas {
+.listaQuizzCompleto {
+    width: 759px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 42px;
+    column-gap: 20px;
+}
+
+.perguntas {
     width: 100%;
-    height: 676px;
     background-color: #FFFFFF;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 30px;
+    padding: min(30px, 5vw);
 }
 
 .enunciadoPergunta {
     width: 100%;
     height: 138px;
-    /* background-color: #434CA0; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -239,21 +262,41 @@ h2 {
 
 .enunciadoPergunta h3 {
     color: #FFFFFF;
-    font-size: 23px;
+    font-size: min(23px, 5.5vw);
     font-weight: 700;
     padding: 25px;
+    line-height: 28px;
 }
 
-.listaAlternativas img {
+.alinhaAlternativas {
+    display: flex;
+}
+
+.alinhaEscolhas {
+    width: 100%;
+    display: flex;
+}
+
+.alternativas {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.alternativas img {
     width: 330px;
     height: 175px;
     object-fit: cover;
+    margin-top: 10px;
 }
 
-.listaAlternativas p {
-    margin-top: 8px;
+.alternativas p {
+    margin-top: 1vw;
     font-weight: 700;
-    font-size: 20px;
+    font-size: min(20px, 3.5vw);
 }
 
 .transparencia {
@@ -275,8 +318,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
-    padding: 30px;
+    padding: min(30px, 5vw);
     margin-top: 20px;
     margin-bottom: 25px;
     gap: 15px;
@@ -289,15 +331,18 @@ h2 {
 }
 
 .listaResultado img {
-    width: 330px;
+    width: 42vw;
+    max-width: 330px;
     height: 175px;
     object-fit: cover;
+    margin-top: 10px;
 }
 
 .infosResultado p {
-    font-size: 19px;
+    font-size: min(19px, 4vw);
     font-weight: 700;
-    line-height: 25px;
+    line-height: 5.5vw;
+    margin-top: 10px;
     color: #484848;
 }
 
@@ -315,16 +360,13 @@ h2 {
 .voltarPraHome {
     text-decoration: none;
     color: #818181;
+    margin-top: 10px;
     margin-bottom: 30px;
 }
 
 @media (max-widht:1100px) {
     
 }
-
-/* FINAL: Tela 2 - Página de um quizz */
-
-
 
 
 
@@ -333,302 +375,302 @@ h2 {
 
 .screen3-1 main { 
 
-/*define a div pai de todos os itens centralizados*/
-
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 140px;
-align-items: center;
-width: 50vw;
-}
+    /*define a div pai de todos os itens centralizados*/
     
-.title {
-font-weight: 700;
-font-size: 23px;
-line-height: 27px;
-display: flex;
-justify-content: center;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 140px;
+    align-items: center;
+    width: 50vw;
+    }
+        
+    .title {
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    display: flex;
+    justify-content: center;
+    }
+        
+    .f-makeQuizz{
+    display: flex;
+    width: 600px;
+    height: auto;
+    margin-top: 27px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #FFFFFF;
+    padding: 0 16px 22px 16px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    }
     
-.f-makeQuizz{
-display: flex;
-width: 600px;
-height: auto;
-margin-top: 27px;
-flex-direction: column;
-align-items: center;
-justify-content: space-evenly;
-background-color: #FFFFFF;
-padding: 0 16px 22px 16px;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-}
-
-.f-makeQuizz input {
-color: #BABABA;
-width:564px;
-height: 46px;
-margin-top: 22px;
-background-color: #FFFFFF;
-border: 1px solid #D1D1D1;
-border-radius: 5px;
-font-style: italic;
-font-weight: 400;
-font-size: 19px;
-line-height: 22px;
-padding-left: 23px;
-
-}
-
-input:focus {
-outline: none;
-}
-label {
-font-weight: 700;
-color: #000000;
-font-style: normal;
-font-size: 20px;
-line-height: 23px;
-margin-bottom: 8px; 
-}
-.button {
-width: 367.2px;
-height: 54px;
-background: #EC362D;
-border-radius: 15px;
-font-weight: 400;
-font-size: 21px;
-line-height: 25px;
-display: flex;
-align-items: center;
-text-align: center;
-color: #FFF5F4;
-display: flex;
-align-items: center;
-justify-content: center;
-margin-top: 81px;
-}
-/* SCREEN3-2 */
-.f-makeQuestions{
-display: flex;
-width: 600px;
-height: auto;
-margin-top: 27px;
-flex-direction: column;
-align-items: center;
-justify-content: space-evenly;
-background-color:  #FFFFFF;
-padding: 0  16px 27px;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    .f-makeQuizz input {
+    color: #BABABA;
+    width:564px;
+    height: 46px;
+    margin-top: 22px;
+    background-color: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    padding-left: 23px;
     
-}
-.f-makeQuestions div {
-background-color:  #FFFFFF;
-display: flex;
-flex-direction: column;
-margin-top: 27px;
-}
-
-.f-makeQuestions input{
-color: #BABABA;
-width:564px;
-height: 46px;
-margin-top: 12px;
-background-color: #FFFFFF;
-border: 1px solid #D1D1D1;
-border-radius: 5px;
-font-style: italic;
-font-weight: 400;
-font-size: 19px;
-line-height: 22px;
-padding-left: 23px;
-}
-
-
-.f-makeQuestions input:nth-child(4){
-margin-top:32px;
-}
-
-.f-makeQuestions input:nth-child(6){
-margin-top:32px;
-}
-
-.screen3-2 main {
-/*define a div pai de todos os itens centralizados*/
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 132px;
-margin-bottom: 468px;
-}
-
-.more-questions {
-display: flex;
-justify-content: space-between;
-align-items: center;
-width: 600px;
-height: 74px;
-background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-width: 100%;
-margin-top: 24px;
-}
-.more-questions label {
-padding-left: 16px;  
-}
-
-.more-questions img{
-width: 26px;
-height: 26px;
-margin-right: 26px;
-}
-
-.screen3-2 .button{
-width:352px;
-height: 54px;
-}
-
-/* SCREEN3-3 */
-.screen3-3 main {
-/*define a div pai de todos os itens centralizados*/
-display: flex;
-width: 600px;
-flex-direction: column;
-align-items: center;
-margin-top: 132px;
-margin-bottom: 468px;
-}
-
-.f-makeLevels {
-display: flex;
-width: 600px;
-height: auto;
-margin-top: 27px;
-flex-direction: column;
-align-items: center;
-justify-content: space-evenly;
-background-color:  #FFFFFF;
-padding: 0 16px 27px;;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-
-}
-
-.f-makeLevels div {
-background-color:  #FFFFFF;
-display: flex;
-flex-direction: column;
-margin-top: 27px;
-}
-
-.f-makeLevels input{
-color: #BABABA;
-width:564px;
-height: 46px;
-margin-top: 12px;
-background-color: #FFFFFF;
-border: 1px solid #D1D1D1;
-border-radius: 5px;
-font-style: italic;
-font-weight: 400;
-font-size: 19px;
-line-height: 22px;
-padding-left: 23px;
-}
-
-.more-levels{
-display: flex;
-justify-content: space-between;
-align-items: center;
-width: 41.6vw;
-height: 74px;
-background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-width: 100%;
-margin-top: 24px;
-}
-
-.more-levels label {
-padding-left: 16px;  
-}
-.more-levels img{
-width: 26px;
-height: 26px;
-margin-right: 16px;
-}
-
-
-.screen3-3 .button{
-width:324px;
-height: 54px;
-}
-
-/*SCREEN 3-4*/
-.screen3-4 main {
-/*define a div pai de todos os itens centralizados*/
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-top: 132px;
-margin-bottom: 468px;
-}
-
-.img-final {
-width: 500px;
-height: 266px;
-position: relative;
-margin-top: 46px;
-}
-.togradiente{
-width: 100%;
-height: 266px;
-position: absolute;
-z-index: 1;
-background: linear-gradient(to top, black, transparent);
-background-size: cover;
-border-radius: 5px;
-}
-.screen3-4 figure img {
-width:100%;
-height: 266px;
-object-fit: cover;
-position: absolute;
-z-index: 0;
-border-radius: 5px;
-} 
-
-.screen3-4 p {
-position: absolute;
-bottom: 22px;
-margin-left: 23px;
-z-index: 2;
-font-style: normal;
-font-weight: 400;
-font-size: 23px;
-line-height: 27px;
-color: #FFFFFF;
-}
-
-.home-back {
-display:flex;
-align-items: center;
-justify-content: center;
-width: 219px;
-height: 44px;
-font-style: normal;
-font-weight: 400;
-font-size: 21px;
-line-height: 25px;
-color: #818181;
-margin-top: 9px;
-}
-
-.screen3-4 .button {
-width: 219px;
-height: 44px;
-}
-
-.hidden {
-display: none;
-}
-
-/* FINAL: Tela 3 - Criação de Quiz */
+    }
+    
+    input:focus {
+    outline: none;
+    }
+    label {
+    font-weight: 700;
+    color: #000000;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 8px; 
+    }
+    .button {
+    width: 367.2px;
+    height: 54px;
+    background: #EC362D;
+    border-radius: 15px;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFF5F4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 81px;
+    }
+    /* SCREEN3-2 */
+    .f-makeQuestions{
+    display: flex;
+    width: 600px;
+    height: auto;
+    margin-top: 27px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color:  #FFFFFF;
+    padding: 0  16px 27px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+        
+    }
+    .f-makeQuestions div {
+    background-color:  #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    margin-top: 27px;
+    }
+    
+    .f-makeQuestions input{
+    color: #BABABA;
+    width:564px;
+    height: 46px;
+    margin-top: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    padding-left: 23px;
+    }
+    
+    
+    .f-makeQuestions input:nth-child(4){
+    margin-top:32px;
+    }
+    
+    .f-makeQuestions input:nth-child(6){
+    margin-top:32px;
+    }
+    
+    .screen3-2 main {
+    /*define a div pai de todos os itens centralizados*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 132px;
+    margin-bottom: 468px;
+    }
+    
+    .more-questions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 600px;
+    height: 74px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    margin-top: 24px;
+    }
+    .more-questions label {
+    padding-left: 16px;  
+    }
+    
+    .more-questions img{
+    width: 26px;
+    height: 26px;
+    margin-right: 26px;
+    }
+    
+    .screen3-2 .button{
+    width:352px;
+    height: 54px;
+    }
+    
+    /* SCREEN3-3 */
+    .screen3-3 main {
+    /*define a div pai de todos os itens centralizados*/
+    display: flex;
+    width: 600px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 132px;
+    margin-bottom: 468px;
+    }
+    
+    .f-makeLevels {
+    display: flex;
+    width: 600px;
+    height: auto;
+    margin-top: 27px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color:  #FFFFFF;
+    padding: 0 16px 27px;;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    
+    }
+    
+    .f-makeLevels div {
+    background-color:  #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    margin-top: 27px;
+    }
+    
+    .f-makeLevels input{
+    color: #BABABA;
+    width:564px;
+    height: 46px;
+    margin-top: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    padding-left: 23px;
+    }
+    
+    .more-levels{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 41.6vw;
+    height: 74px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    margin-top: 24px;
+    }
+    
+    .more-levels label {
+    padding-left: 16px;  
+    }
+    .more-levels img{
+    width: 26px;
+    height: 26px;
+    margin-right: 16px;
+    }
+    
+    
+    .screen3-3 .button{
+    width:324px;
+    height: 54px;
+    }
+    
+    /*SCREEN 3-4*/
+    .screen3-4 main {
+    /*define a div pai de todos os itens centralizados*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 132px;
+    margin-bottom: 468px;
+    }
+    
+    .img-final {
+    width: 500px;
+    height: 266px;
+    position: relative;
+    margin-top: 46px;
+    }
+    .togradiente{
+    width: 100%;
+    height: 266px;
+    position: absolute;
+    z-index: 1;
+    background: linear-gradient(to top, black, transparent);
+    background-size: cover;
+    border-radius: 5px;
+    }
+    .screen3-4 figure img {
+    width:100%;
+    height: 266px;
+    object-fit: cover;
+    position: absolute;
+    z-index: 0;
+    border-radius: 5px;
+    } 
+    
+    .screen3-4 p {
+    position: absolute;
+    bottom: 22px;
+    margin-left: 23px;
+    z-index: 2;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 27px;
+    color: #FFFFFF;
+    }
+    
+    .home-back {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 219px;
+    height: 44px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 25px;
+    color: #818181;
+    margin-top: 9px;
+    }
+    
+    .screen3-4 .button {
+    width: 219px;
+    height: 44px;
+    }
+    
+    .hidden {
+    display: none;
+    }
+    
+    /* FINAL: Tela 3 - Criação de Quiz */
