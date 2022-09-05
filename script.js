@@ -419,10 +419,10 @@ function adicionarPerguntas(){
         perguntas.innerHTML+= `<div class="more-questions mqheader${i}">
         <label for="fname">Pergunta ${i}</label>
         <figure >
-            <img  onclick="abrirPerguntas(this)" numero=${i} src="/arquivos/Vector.png" alt="">
+            <img data-identifier="expand"  onclick="abrirPerguntas(this)" numero=${i} src="/arquivos/Vector.png" alt="">
         </figure>
     </div>
-    <form action="" class="f-makeQuestions hidden pergunta${i}" >
+    <form data-identifier="question-form" action="" class="f-makeQuestions hidden pergunta${i}" >
         <div>
             <label for="fname">Pergunta ${i}</label>
             <input type="text"  class="question${i}" placeholder="Texto da pergunta">
@@ -586,10 +586,10 @@ function abrirPerguntas(quest){
             <div class="more-levels nheader${i}">
                 <label for="fname">Nível${i}</label>
                 <figure>
-                    <img codigo="${i}" onclick="abrirNiveis(this)" src="/arquivos/Vector.png" alt="">
+                    <img data-identifier="expand" codigo="${i}" onclick="abrirNiveis(this)" src="/arquivos/Vector.png" alt="">
                 </figure>
             </div>
-            <form action="" class="f-makeLevels n${i} hidden">
+            <form data-identifier="level" action="" class="f-makeLevels n${i} hidden">
             <div class="box">
                 <label for="fname">Nível ${i}</label>
                 <input type="text" class="nivel${i}" placeholder="Título do nível">
@@ -671,21 +671,22 @@ function abrirPerguntas(quest){
             <div class="title">
             <span>Seu quizz está pronto</span>
         </div>
-        <div class="img-final">
+        <div class="img-final" onclick=" buscarQuizzCriado()">
             <div class="togradiente"></div>
             <figure>
                 <img src="${quizzCriado.image}" alt="">
             </figure>
             <p>${quizzCriado.title}</p>
         </div>
-        <div class="button">
-            Finalizar Quizz
+        <div class="button" onclick=" buscarQuizzCriado()">
+            Acessar quizz
         </div>
         <span class="home-back" onclick=" backHome()">
             Voltar para home 
         </span>
     </main>
     `
+    ArmazenarId()
 }
 
 
@@ -704,4 +705,23 @@ function abrirPerguntas(quest){
     document.querySelector('.screen3-4').classList.add('hidden')
  }
 
+ function buscarQuizzCriado() {
+    document.querySelector('.tela2').classList.remove('hidden')
+    document.querySelector('.screen3-4').classList.add('hidden')
+    const buscarQuizz = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzCriado.id}`);
+    buscarQuizz.then(renderizarQuizzEscolhido);
+    buscarQuizz.catch(tratarErro);
 
+}
+
+ function ArmazenarId(){
+    const ArrayIdserializada = JSON.stringify(ArrayId)
+    localStorage.setItem("Id",ArrayIdserializada)
+ }
+
+ function teste(){
+    console.log(ArrayIdarmazenado)
+ }
+
+
+   
