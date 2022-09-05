@@ -21,12 +21,23 @@ function tratarErro(erro){
 
 function renderizarQuizzes(resposta){
 
+    const listaSerializada = localStorage.getItem('Id')
+    const ArrayIdarmazenado = JSON.parse(listaSerializada)
+
     listaQuizzes = resposta.data;
 
     const quizz = document.querySelector('.todos');
 
     quizz.innerHTML= ""
     for(let i=0; i<listaQuizzes.length; i++){
+
+        if(ArrayIdarmazenado.includes(listaQuizzes[i].id)) {
+            let criarQuizz = document.querySelector(".criarQuizz")
+            criarQuizz.classList.add("hidden")
+            let seusQuizzes = document.querySelector(".seusQuizzes")
+            seusQuizzes.classList.remove("hidden")
+        }
+
         quizz.innerHTML += `<div class="itemListaMain" onclick="abrirQuizz('${listaQuizzes[i].id}')">
         <div class="relativeIndex">
             <div class="gradient"></div>
@@ -117,8 +128,6 @@ function carregarPerguntas(quizzSelecionado) {
             </div>
             `);
             
-            // RANDOM NÃO ESTÁ FUNCIONANDO BEM
-            // SÓ EMBARALHA A 1ª PERGUNTA [i]
             if(z === quizzSelecionado.questions[i].answers.length - 1) {
                 console.log(i);
                 arrayAlternativas.sort(comparador);
@@ -130,43 +139,54 @@ function carregarPerguntas(quizzSelecionado) {
 
 let ref;
 let alternativa;
+let contadorRespostas = 0;
+let numeroDePerguntas = 0;
 function validarResposta(palpite) {
 
-        let alternativaEscolhida = palpite.querySelector("p");
-        let lista = alternativaEscolhida.parentNode;
+    let alternativaEscolhida = palpite.querySelector("p");
+    let lista = alternativaEscolhida.parentNode;
 
-        let teste = document.querySelectorAll(".alinhaEscolhas");
-        console.log(teste);
-            
-        lista.classList.add("escolhido");
-        lista.classList.remove("naoSelecionado");
-        ref = (lista.classList[0]);
-        let num = (ref.slice(-2))
-        let pergunta = document.querySelectorAll(`.${ref}.naoSelecionado`);
+    // let teste = document.querySelectorAll(".alinhaEscolhas");
+    // console.log(teste);
+        
+    lista.classList.add("escolhido");
+    lista.classList.remove("naoSelecionado");
+    ref = (lista.classList[0]);
+    let num = (ref.slice(-2))
+    let pergunta = document.querySelectorAll(`.${ref}.naoSelecionado`);
 
 
-        if(lista.classList[0]) {
-            
-            let perg = document.querySelectorAll(`.pergunta${num}`);
+    if(lista.classList[0]) {
+        
+        let perg = document.querySelectorAll(`.pergunta${num}`);
 
-            for(a = 0; a < perg.length; a++) {
-                let condicao = document.querySelector(`.pergunta${num} .p${a+1}`);
-                if(perg[a].classList.contains("true")) {
-                    condicao.classList.add("respostaCorreta");
+        for(a = 0; a < perg.length; a++) {
+            let condicao = document.querySelector(`.pergunta${num} .p${a+1}`);
+            if(perg[a].classList.contains("true")) {
+                condicao.classList.add("respostaCorreta");
 
-                } else {
-                    condicao.classList.add("respostaErrada");
-                }
+            } else {
+                condicao.classList.add("respostaErrada");
             }
         }
+    }
 
-        if(lista.classList[0]) {
-            for(let i = 0; i < pergunta.length; i++) {
-                pergunta[i].classList.add("transparencia");
-            }
-        };
+    if(lista.classList[0]) {
+        for(let i = 0; i < pergunta.length; i++) {
+            pergunta[i].classList.add("transparencia");
+        }
+    };
 
-        setTimeout(scrollPergunta, 2000);
+    setTimeout(scrollPergunta, 2000);
+
+    numeroDePerguntas = document.querySelectorAll(".enunciadoPergunta")
+    console.log(numeroDePerguntas);
+    contadorRespostas += 1;
+    console.log(contadorRespostas);
+
+    if (contadorRespostas === numeroDePerguntas.length) {
+        resultadoDoQuizz()
+    }    
 }
 
 function comparador() { 
@@ -184,6 +204,55 @@ function scrollPergunta() {
         let scroll = document.getElementById(`${id}`);
         scroll.scrollIntoView({block: "center", behavior: "smooth"});
     }
+}
+
+function resultadoDoQuizz() {
+    console.log("entrei na funcao")
+
+    let respostasErradas = document.querySelectorAll(".transparencia .respostaCorreta");
+    console.log(respostasErradas);
+    // essa variável pega o número de perguntas escondidas que estavam certas
+    
+    let resultadoPercentual = (100 / contadorRespostas) * (contadorRespostas - respostasErradas.length);
+    let resultadoFinal = Math.ceil(resultadoPercentual);
+    // console.log(resultadoFinal);
+
+    const exibirResposta = document.querySelector(".listaResultado");
+
+    console.log(quizzSelecionado);
+    console.log(quizzSelecionado.levels)
+
+    let level = {};
+    let nivel = quizzSelecionado.levels;
+
+    for (i = 0; i < nivel.length; i++) {
+        
+        if(resultadoFinal > nivel[i].minValue) {
+            level = nivel[i];
+            console.log(level)
+        }
+    }
+
+    exibirResposta.innerHTML =
+    `
+    <div class="enunciadoResultado" style="background-color: #EC362D;">
+        <h3>${level.title}</h3>
+    </div>
+    <li class="">
+        <div class="infosResultado">
+            <img src=${level.image} alt="">
+            <p>${level.text}</p>
+        </div>
+    </li>
+    `;
+
+
+    let resultado = document.querySelector('.resultadoQuizz');
+    resultado.classList.remove('hidden');
+    
+    
+
+
 }
 
 function voltarHome() {
@@ -220,7 +289,20 @@ function reiniciarQuizz() {
         let scroll = document.getElementById("scrollTopo");
         scroll.scrollIntoView({block: "center", behavior: "smooth"});
     }
+
+    let resultado = document.querySelector('.resultadoQuizz');
+    resultado.classList.add('hidden');
 }
+
+
+
+
+
+
+function irParaTelaTres (){
+    document.querySelector('.tela1').classList.add('hidden')
+    document.querySelector('.screen3-1').classList.remove('hidden')
+ }
 
 
 
