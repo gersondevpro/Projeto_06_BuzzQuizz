@@ -498,7 +498,7 @@ function abrirPerguntas(quest){
             imgEtituloRespota.color=infos[1].value
            
         }
-        if (!infos[2].value || infos[2].value.length< 20){
+        if (!infos[2].value){
             return alert('Preencha os campos corretamente')
         }
         else{
@@ -513,7 +513,7 @@ function abrirPerguntas(quest){
             resposta.push(objResposta)
         }
         objResposta = {}
-        if (!infos[4].value || infos[4].value.length< 20){
+        if (!infos[4].value){
             return alert('Preencha os campos corretamente')
         }
         else {
@@ -528,7 +528,7 @@ function abrirPerguntas(quest){
             resposta.push(objResposta)
         }
         objResposta = {};
-        if (!infos[6].value || infos[6].value.length < 20){
+        if (!infos[6].value){
             return alert('Preencha os campos corretamente')
         }
         else {
@@ -543,7 +543,7 @@ function abrirPerguntas(quest){
             resposta.push(objResposta)
         }
         objResposta = {};
-        if (!infos[8].value || infos[8].value.length< 20){
+        if (!infos[8].value){
             return alert('Preencha os campos corretamente')
         }
         else {
