@@ -15,157 +15,169 @@
     <header>
         <h1 class="tituloGeral">BuzzQuizz</h1>
     </header>
-    
+
     <!-- INÍCIO: Tela 1 - Tela 1 - Lista de Quizzes -->
     
+
     <div class="alinhamentoBlocos tela1 hidden">
 
-        <div class="criarQuizz">
+    <div class="tela1">
+
+
+        <div id="topoTela1" class="criarQuizz">
             <p>Você não criou nenhum<br>quizz ainda :(</p>
-            <button>
+            <button onclick="irParaTelaTres()">
                 Criar Quizz
             </button>
         </div>
 
 
-        <section>
-            <div class="seusQuizzes">
+        <section class="seusQuizzes hidden">
+
+            <div class="seusQuizzesAdicionar">
                 <h2>Seus Quizzes</h2>
-                <img src="/arquivos/Group 22.png" alt="">
+                <img src="/arquivos/Group 22.png" onclick="irParaTelaTres()" alt="">
             </div>
+
             <div class="divQuizzes">
                 <ul class="listaQuizzes">
 
-
                     <div class="itemListaMain">
                         <div class="relativeIndex">
-
                             <div class="gradient"></div>
-                            <img src="/arquivos/Hogwarts.jpg" alt="">
-
+                            <img src="/arquivos/simpsons.jpeg" alt="">
                         </div>
 
                         <li class="itemLista">
                             <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
                         </li>
+
                     </div>
 
                     <div class="itemListaMain">
-                        <div class="relativeIndex">
 
+                        <div class="relativeIndex">
                             <div class="gradient"></div>
                             <img src="/arquivos/Hogwarts.jpg" alt="">
-
                         </div>
 
                         <li class="itemLista">
                             <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
                         </li>
+
                     </div>
 
                 </ul>
             </div>
         </section>
 
+        <section class="todosOsQuizzes">
 
-
-        <main>
             <h2>Todos os Quizzes</h2>
             <div class="divQuizzes">
                 <ul class="listaQuizzes todos">
                     
+                    <!-- <div class="itemListaMain">
+
+                        <div class="relativeIndex">
+                            <div class="gradient"></div>
+                            <img src="/arquivos/Hogwarts.jpg" alt="">
+                        </div>
+
+                        <li class="itemLista">
+                            <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                        </li>
+
+                    </div>
+
+                    <div class="itemListaMain">
+
+                        <div class="relativeIndex">
+                            <div class="gradient"></div>
+                            <img src="/arquivos/simpsons.jpeg" alt="">
+                        </div>
+
+                        <li class="itemLista">
+                            <p>Acerte os personagens corretos dos Simpsons e prove seu amor!</p>
+                        </li>
+
+                    </div> -->
     
                 </ul>
             </div>
-        </main>
+        </section>
 
     </div>
 
-    <!-- FINAL: Tela 1 - Tela 1 - Lista de Quizzes -->
+    <!-- INÍCIO: Tela 2 - Tela 2 - Página de um quizz -->
+    <div class="tela2 hidden">
+        <section class="capaQuizz">
 
+            <div class="relative">
+                <img src="/arquivos/Hogwarts.jpg" alt="">
+            </div>
 
+            <div class="absolute">
+            </div>
 
+            <div class="tituloCabecalho">
+                <h2>O quão Potterhead é você?</h2>
+            </div>
+        </section>
+        
+        <section class="quizz">
 
-    <!-- INÍCIO: Tela 2 - Página de um quizz -->
+                <ul class="listaQuizzCompleto">
 
-    <section class="cabecalho hidden tela2">
+                    
+                    <div class="perguntas">
 
-        <div class="relative">
-            <img src="/arquivos/Hogwarts.jpg" alt="">
-        </div>
-
-        <div class="absolute">
-        </div>
-
-        <div class="tituloCabecalho">
-            <h2>O quão Potterhead é você?</h2>
-        </div>
-    </section>
-    
-    <main class="hidden">
-        <div>
-
-        </div>
-        <div>
-            <ul class="listaQuizzCompleto">
-
-
-                <li class="itemPergunta">
-                    <ul class="listaAlternativas">
-                        <div class="enunciadoPergunta" style="background-color: #434CA0;">
+                        <!-- <div class="enunciadoPergunta" style="background-color: #434CA0;">
                             <h3>Em qual animal Olho-Tonto Moody transfigurou Malfoy?</h3>
                         </div>
-                        <li class="alternativa">
-                            <div class="transparencia">
-                                <img src="/arquivos/simpsons.jpeg" alt="">
-                                <p>Homer Simpson</p>
+
+                        <div class="alinhaAlternativas">
+                            <div class="alinhaEscolhas">
+                                <li class="alternativas">
+                                    <img src="/arquivos/simpsons.jpeg" alt="">
+                                    <p>Texto da resposta XX</p>
+                                </li>
                             </div>
-                        </li>
-                        <li class="alternativa">
-                            <div class="transparencia">
-                                <img src="/arquivos/simpsons.jpeg" alt="">
-                                <p>Homer Simpson</p>
+                        </div> -->
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                    <!-- Preciso editar classes ainda -->
+
+                    <li class="resultadoQuizz hidden">
+                        <ul class="listaResultado">
+                            <div class="enunciadoPergunta" style="background-color: #EC362D;"">
+                                <h3>88% de acerto: Você é praticamente um aluno de Hogwarts!</h3>
                             </div>
-                        </li>
-                        <li class="alternativa">
-                            <div>
-                                <img src="/arquivos/simpsons.jpeg" alt="">
-                                <p class="respostaCorreta">Homer Simpson</p>
-                            </div>
-                        </li>
-                        <li class="alternativa">
-                            <div class="transparencia">
-                                <img src="/arquivos/simpsons.jpeg" alt="">
-                                <p>Homer Simpson</p>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+                            <li class=" ">
+                                <div class="infosResultado">
+                                    <img src="/arquivos/simpsons.jpeg" alt="">
+                                    <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <button class="botaoReiniciarQuizz" onclick="reiniciarQuizz()">Reiniciar Quizz</button>
+                    <p class="voltarPraHome" onclick="voltarHome()">Voltar pra home</p>
+                </ul>
 
-                <li class="resultadoQuizz">
-                    <ul class="listaResultado">
-                        <div class="enunciadoPergunta" style="background-color: #EC362D;">
-                            <h3>88% de acerto: Você é praticamente um aluno de Hogwarts!</h3>
-                        </div>
-                        <li class=" ">
-                            <div class="infosResultado">
-                                <img src="/arquivos/simpsons.jpeg" alt="">
-                                <p>Parabéns Potterhead! Bem-vindx a Hogwarts, aproveite o loop infinito de comida e clique no botão abaixo para usar o vira-tempo e reiniciar este teste.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-
-                <button class="botaoReiniciarQuizz">Reiniciar Quizz</button>
-                <a href="" class="voltarPraHome">Voltar pra home</a>
-            </ul>
-        </div>
-    </main>
-
-    <!-- FINAL: Tela 2 - Página de um quizz -->
-
-
-
+        </section>
+    </div>
 
     <!-- INÍCIO: Tela 3 - Criação de Quiz -->
 
@@ -283,3 +295,4 @@
     <script src="/scrip.js"></script>
 </body>
 </html>
+
