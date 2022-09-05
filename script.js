@@ -20,33 +20,53 @@ function tratarErro(erro){
 // Adiciona os quizzes na parte do todos
 
 function renderizarQuizzes(resposta){
+    console.log(ArrayId);
+    listaQuizzes = resposta.data;
+    const arrayIdSerializada = JSON.stringify(ArrayId)
+    localStorage.setItem('Id',arrayIdSerializada)
 
     const listaSerializada = localStorage.getItem('Id')
-    const ArrayIdarmazenado = JSON.parse(listaSerializada)
+    const arrayIdArmazenado = JSON.parse(listaSerializada)
 
-    listaQuizzes = resposta.data;
 
     const quizz = document.querySelector('.todos');
+    const meusQuizzes = document.querySelector(".meus")
 
     quizz.innerHTML= ""
+
+
     for(let i=0; i<listaQuizzes.length; i++){
 
-        if(ArrayIdarmazenado.includes(listaQuizzes[i].id)) {
+        console.log(listaQuizzes[i].id);
+        console.log(arrayIdArmazenado);
+
+        if(arrayIdArmazenado.includes(listaQuizzes[i].id)) {
             let criarQuizz = document.querySelector(".criarQuizz")
             criarQuizz.classList.add("hidden")
             let seusQuizzes = document.querySelector(".seusQuizzes")
             seusQuizzes.classList.remove("hidden")
-        }
 
-        quizz.innerHTML += `<div class="itemListaMain" onclick="abrirQuizz('${listaQuizzes[i].id}')">
-        <div class="relativeIndex">
-            <div class="gradient"></div>
-            <img src="${listaQuizzes[i].image}" alt="">
-        </div>
-            <li class="itemLista">
-                <p>${listaQuizzes[i].title}</p>
-            </li>
-        </div>`
+            meusQuizzes.innerHTML += `<div class="itemListaMain" onclick="abrirQuizz('${listaQuizzes[i].id}')" data-identifier="quizz-card">
+            <div class="relativeIndex">
+                <div class="gradient"></div>
+                <img src="${listaQuizzes[i].image}" alt="">
+            </div>
+                <li class="itemLista">
+                    <p>${listaQuizzes[i].title}</p>
+                </li>
+            </div>`
+        } else {
+
+            quizz.innerHTML += `<div class="itemListaMain" onclick="abrirQuizz('${listaQuizzes[i].id}')" data-identifier="quizz-card">
+            <div class="relativeIndex">
+                <div class="gradient"></div>
+                <img src="${listaQuizzes[i].image}" alt="">
+            </div>
+                <li class="itemLista">
+                    <p>${listaQuizzes[i].title}</p>
+                </li>
+            </div>`
+        }
     }
 
     // scroll que retorna para o topo da home depois de realizar um quizz
@@ -108,7 +128,7 @@ function carregarPerguntas(quizzSelecionado) {
     for(let i = 0; i < quizzSelecionado.questions.length; i++) {
         
         perguntas.innerHTML +=`
-        <div id="p${i+1}" class="enunciadoPergunta" style="background-color: ${quizzSelecionado.questions[i].color}">
+        <div id="p${i+1}" class="enunciadoPergunta" style="background-color: ${quizzSelecionado.questions[i].color}" data-identifier="question">
             <h3>${quizzSelecionado.questions[i].title}</h3>
         </div>
         `;
@@ -120,7 +140,7 @@ function carregarPerguntas(quizzSelecionado) {
             arrayAlternativas.push(`
             <div class="alinhaAlternativas">
                 <div class="alinhaEscolhas">
-                    <li class="pergunta0${i+1} ${quizzSelecionado.questions[i].answers[z].isCorrectAnswer} naoSelecionado alternativas" onclick="validarResposta(this)">
+                    <li class="pergunta0${i+1} ${quizzSelecionado.questions[i].answers[z].isCorrectAnswer} naoSelecionado alternativas" onclick="validarResposta(this)" data-identifier="answer">
                         <img src=${quizzSelecionado.questions[i].answers[z].image} alt="">
                         <p class="p${z+1}">${quizzSelecionado.questions[i].answers[z].text}</p>
                     </li>
@@ -310,132 +330,6 @@ function irParaTelaTres (){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let valorURL;
 let numeroquestoes;
 let imgprincipal;
@@ -501,10 +395,10 @@ function adicionarPerguntas(){
         perguntas.innerHTML+= `<div class="more-questions mqheader${i}">
         <label for="fname">Pergunta ${i}</label>
         <figure >
-            <img  onclick="abrirPerguntas(this)" numero=${i} src="/arquivos/Vector.png" alt="">
+            <img data-identifier="expand"  onclick="abrirPerguntas(this)" numero=${i} src="/arquivos/Vector.png" alt="">
         </figure>
     </div>
-    <form action="" class="f-makeQuestions hidden pergunta${i}" >
+    <form data-identifier="question-form" action="" class="f-makeQuestions hidden pergunta${i}" >
         <div>
             <label for="fname">Pergunta ${i}</label>
             <input type="text"  class="question${i}" placeholder="Texto da pergunta">
@@ -668,10 +562,10 @@ function abrirPerguntas(quest){
             <div class="more-levels nheader${i}">
                 <label for="fname">Nível${i}</label>
                 <figure>
-                    <img codigo="${i}" onclick="abrirNiveis(this)" src="/arquivos/Vector.png" alt="">
+                    <img data-identifier="expand" codigo="${i}" onclick="abrirNiveis(this)" src="/arquivos/Vector.png" alt="">
                 </figure>
             </div>
-            <form action="" class="f-makeLevels n${i} hidden">
+            <form data-identifier="level" action="" class="f-makeLevels n${i} hidden">
             <div class="box">
                 <label for="fname">Nível ${i}</label>
                 <input type="text" class="nivel${i}" placeholder="Título do nível">
@@ -740,6 +634,7 @@ function abrirPerguntas(quest){
     promise.catch(TratarErro)
  }
  let quizzCriado;
+
  let ArrayId=[];
  function tratSucesso(sucesso){
     quizzCriado = sucesso.data
@@ -753,15 +648,15 @@ function abrirPerguntas(quest){
             <div class="title">
             <span>Seu quizz está pronto</span>
         </div>
-        <div class="img-final">
+        <div class="img-final" onclick=" buscarQuizzCriado()">
             <div class="togradiente"></div>
             <figure>
                 <img src="${quizzCriado.image}" alt="">
             </figure>
             <p>${quizzCriado.title}</p>
         </div>
-        <div class="button">
-            Finalizar Quizz
+        <div class="button" onclick=" buscarQuizzCriado()">
+            Acessar quizz
         </div>
         <span class="home-back" onclick=" backHome()">
             Voltar para home 
@@ -784,6 +679,17 @@ function abrirPerguntas(quest){
  function backHome(){
     document.querySelector('.tela1').classList.remove('hidden')
     document.querySelector('.screen3-4').classList.add('hidden')
+
+    buscarQuizzes()
  }
 
+ function buscarQuizzCriado() {
+    document.querySelector('.tela2').classList.remove('hidden')
+    document.querySelector('.screen3-4').classList.add('hidden')
+    const buscarQuizz = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzCriado.id}`);
+    buscarQuizz.then(renderizarQuizzEscolhido);
+    buscarQuizz.catch(tratarErro);
 
+}
+
+   

@@ -29,15 +29,15 @@
         </div>
 
 
-        <section class="seusQuizzes distTop hidden">
+        <section class="seusQuizzes distTop hidden" data-identifier="user-quizzes">
 
-            <div class="seusQuizzesAdicionar ">
+            <div class="seusQuizzesAdicionar">
                 <h2>Seus Quizzes</h2>
-                <img src="/arquivos/Group 22.png" onclick="irParaTelaTres()" alt="">
+                <img src="/arquivos/Group 22.png" onclick="irParaTelaTres()" data-identifier="create-quizz" alt="">
             </div>
 
             <div class="divQuizzes">
-                <ul class="listaQuizzes">
+                <ul class="listaQuizzes meus">
 
                     <div class="itemListaMain">
                         <div class="relativeIndex">
@@ -68,7 +68,7 @@
             </div>
         </section>
 
-        <section class="todosOsQuizzes">
+        <section class="todosOsQuizzes" data-identifier="general-quizzes">
 
             <h2>Todos os Quizzes</h2>
             <div class="divQuizzes">
@@ -156,7 +156,7 @@
                     <!-- Preciso editar classes ainda -->
 
                     <li class="resultadoQuizz hidden">
-                        <ul class="listaResultado">
+                        <ul class="listaResultado" data-identifier="quizz-result">
                             <div class="enunciadoResultado" style="background-color: #EC362D;"">
                                 <h3>88% de acerto: Você é praticamente um aluno de Hogwarts!</h3>
                             </div>
