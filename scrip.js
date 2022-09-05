@@ -290,7 +290,9 @@ function limparInputs(){
 
 function abrirPerguntas(quest){
     const numero = quest.getAttribute('numero')
-    document.querySelector(`.pergunta${numero}`).classList.toggle('hidden')
+    document.querySelector(`.pergunta${numero}`).classList.remove('hidden')
+    console.log(numero)
+    document.querySelector(`.mqheader${numero}`).classList.add('hidden')
 }
 
 
@@ -308,18 +310,19 @@ function abrirPerguntas(quest){
     let imgEtituloRespota = {}
     let resposta = [] // recebe o objeto de cada resposta
     let objResposta = {}
+    let Arrayquestions =[]
     function selecionarInfoquizz(){
         let infos =[]
-      for (let i=1; i<=numeroquestoes;i++){
+       for (let i=1; i<=numeroquestoes;i++){ 
         infos = document.querySelectorAll(`.question${i}`)
         if(!infos[0].value ||infos[0].value.length < 20){
-            return alert('problemas')              
+            return alert('Preencha os campos corretamente')             
         }
         else {
            imgEtituloRespota.title = infos[0].value
         }
         if (infos[1].value[0]!=='#' || !(infos[1].value.match('#[0-9A-Fa-f]+'))||infos[1].value.length!==7){
-            return alert('Não é uma cor hexadecimal')
+            return alert('Preencha os campos corretamente')
         }
         else{
             imgEtituloRespota.color=infos[1].value
@@ -332,7 +335,7 @@ function abrirPerguntas(quest){
             objResposta.text=infos[2].value
         }
         if(!validarURLperguntas(infos[3].value)){
-            return alert('Não é uma url')
+            return alert('Preencha os campos corretamente')
         }
         else {
             objResposta.image = infos[3].value
@@ -341,13 +344,13 @@ function abrirPerguntas(quest){
         }
         objResposta = {}
         if (!infos[4].value || infos[4].value.length< 20){
-            return alert('problemas')
+            return alert('Preencha os campos corretamente')
         }
         else {
             objResposta.text=infos[4].value
         }
         if(!validarURLperguntas(infos[5].value)){
-            return alert('Não é uma url')
+            return alert('Preencha os campos corretamente')
         }
         else {
             objResposta.image = infos[5].value
@@ -356,13 +359,13 @@ function abrirPerguntas(quest){
         }
         objResposta = {};
         if (!infos[6].value || infos[6].value.length < 20){
-            return alert('problemas')
+            return alert('Preencha os campos corretamente')
         }
         else {
             objResposta.text=infos[6].value
         }
         if(!validarURLperguntas(infos[7].value)){
-            return alert('Não é uma url')
+            return alert('Preencha os campos corretamente')
         }
         else {
             objResposta.image = infos[7].value
@@ -371,13 +374,13 @@ function abrirPerguntas(quest){
         }
         objResposta = {};
         if (!infos[8].value || infos[8].value.length< 20){
-            return alert('problemas')
+            return alert('Preencha os campos corretamente')
         }
         else {
             objResposta.text=infos[8].value
         }
         if(!validarURLperguntas(infos[9].value)){
-            return alert('Não é uma url')
+            return alert('Preencha os campos corretamente')
         }
         else {
             objResposta.image = infos[9].value
@@ -385,14 +388,17 @@ function abrirPerguntas(quest){
             resposta.push(objResposta)
         }
        
-        objResposta = {}  
+        objResposta = {};
+        imgEtituloRespota.answers = resposta;
+        Arrayquestions.push(imgEtituloRespota);
+        imgEtituloRespota ={};
+        resposta = [];  
       }
-      imgEtituloRespota.answers = resposta
-      quizz.questions = [imgEtituloRespota]
+       quizz.questions = Arrayquestions
         liberarScreen3_3()
         renderizarNiveis()
-      console.log(quizz)
-    }
+       console.log(quizz) 
+    } 
     
     function liberarScreen3_3(){
         document.querySelector('.screen3-2').classList.add('hidden')
@@ -407,7 +413,7 @@ function abrirPerguntas(quest){
          `
         for (let i=1; i<=numeroniveis;i++){
             niveis.innerHTML += `
-            <div class="more-levels">
+            <div class="more-levels nheader${i}">
                 <label for="fname">Nível${i}</label>
                 <figure>
                     <img codigo="${i}" onclick="abrirNiveis(this)" src="/arquivos/Vector.png" alt="">
@@ -430,7 +436,9 @@ function abrirPerguntas(quest){
 
     function abrirNiveis(nivel) {
         const codigoNivel = nivel.getAttribute('codigo')
-        document.querySelector(`.n${codigoNivel}`).classList.toggle('hidden')
+        document.querySelector(`.n${codigoNivel}`).classList.remove('hidden')
+        document.querySelector(`.nheader${codigoNivel}`).classList.add('hidden')
+        
     }
     let NiveisArray = []
     let objLevels = {}
@@ -457,18 +465,70 @@ function abrirPerguntas(quest){
             return alert('Preencha os campos corretamente')
          }
          if ( Number(nivel[1].value)>=0 && Number(nivel[1].value)<=100){
-            objLevels.minValue = Number(nivel[1].value)
+            objLevels.minValue = parseInt(nivel[1].value)
         } 
         else{
              return alert('Preencha os campos corretamente') 
         }
 
-        NiveisArray.push(objLevels) 
-    
+        NiveisArray.push(objLevels); 
+        objLevels = {};
     } 
-    alert('done')
-    quizz.levels = NiveisArray
+    
+     quizz.levels = NiveisArray
     console.log(quizz)
+    liberarTela3_4()
+    criarQuizz() 
 }
     
-     
+ function criarQuizz(){
+    const promise = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes',quizz)
+    promise.then(tratSucesso)
+    promise.catch(TratarErro)
+ }
+ let quizzCriado;
+ let ArrayId=[];
+ function tratSucesso(sucesso){
+    quizzCriado = sucesso.data
+    ArrayId.push(quizzCriado.id)
+    console.log(quizzCriado.id)
+    console.log(ArrayId)
+    
+    const ultimatela = document.querySelector('.screen3-4 main')
+    ultimatela.innerHTML=''
+    ultimatela.innerHTML += `
+            <div class="title">
+            <span>Seu quizz está pronto</span>
+        </div>
+        <div class="img-final">
+            <div class="togradiente"></div>
+            <figure>
+                <img src="${quizzCriado.image}" alt="">
+            </figure>
+            <p>${quizzCriado.title}</p>
+        </div>
+        <div class="button">
+            Finalizar Quizz
+        </div>
+        <span class="home-back" onclick=" backHome()">
+            Voltar para home 
+        </span>
+    </main>
+    `
+}
+
+
+ function TratarErro(erro){
+    console.log(erro.response.status)
+ }
+
+ 
+ function liberarTela3_4(){
+    document.querySelector('.screen3-3').classList.add('hidden')
+    document.querySelector('.screen3-4').classList.remove('hidden')
+ } 
+
+ function backHome(){
+    document.querySelector('.tela1').classList.remove('hidden')
+    document.querySelector('.screen3-4').classList.add('hidden')
+ }

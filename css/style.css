@@ -571,6 +571,7 @@ flex-direction: column;
 align-items: center;
 margin-top: 132px;
 margin-bottom: 468px;
+word-wrap: break-word;
 }
 
 .img-final {
@@ -578,12 +579,13 @@ width: 500px;
 height: 266px;
 position: relative;
 margin-top: 46px;
+word-wrap: break-word;
 }
 .togradiente{
 width: 100%;
 height: 266px;
 position: absolute;
-z-index: 1;
+z-index:1;
 background: linear-gradient(to top, black, transparent);
 background-size: cover;
 border-radius: 5px;
@@ -601,12 +603,14 @@ border-radius: 5px;
 position: absolute;
 bottom: 22px;
 margin-left: 23px;
-z-index: 2;
+z-index: 1;
 font-style: normal;
 font-weight: 400;
 font-size: 23px;
 line-height: 27px;
 color: #FFFFFF;
+
+
 }
 
 .home-back {
